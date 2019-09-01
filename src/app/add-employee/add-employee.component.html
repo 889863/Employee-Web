@@ -1,32 +1,100 @@
 <div class="employee-container">
   <h2>Add new employee</h2>
   <div class="form-container">
-    <form>
+    <form autocomplete="off" [formGroup]="addEmployeeForm" novalidate>
       <div class="part1">
-          <label>Employee Number</label>
-          <input type="text" name="eId" placeholder="Employee Id:">
-          <label>First Name</label>
-          <input type="text" name="fName" placeholder="First Name:">
-          <label>Last Name</label>
-          <input type="text" name="lName" placeholder="Last Name:">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="Email:">
-          <label>Phone</label>
-          <input type="text" name="phone" placeholder="Phone:">
-          <label>Joining Date</label>
-          <input type="text" name="date" placeholder="Date:">
+          <label>*First Name</label>
+          <input type="text" class="form-control" formControlName="first_name" placeholder="First Name:">
+          <div *ngIf="addEmployeeForm.controls['first_name'].invalid && (addEmployeeForm.controls['first_name'].dirty || addEmployeeForm.controls['first_name'].touched)" class="alert alert-danger">
+            <div *ngIf="addEmployeeForm.controls['first_name'].errors.required">
+              First Name is required.
+            </div>
+         </div>
+          <label>*Last Name</label>
+          <input type="text" class="form-control" formControlName="last_name"  placeholder="Last Name:" >
+          <div *ngIf="addEmployeeForm.controls['last_name'].invalid && (addEmployeeForm.controls['last_name'].dirty || addEmployeeForm.controls['last_name'].touched)" class="alert alert-danger">
+            <div *ngIf="addEmployeeForm.controls['last_name'].errors.required">
+              Last Name is required.
+            </div>
+         </div>
+          <label>*Email Address</label>
+          <input type="email" class="form-control" formControlName="email" [value] = "addEmployeeForm.value.first_name+'.'+addEmployeeForm.value.last_name+'@mycompany.com'" placeholder="Email:">
+          <div *ngIf="addEmployeeForm.controls['email'].invalid && (addEmployeeForm.controls['email'].dirty || addEmployeeForm.controls['email'].touched)" class="alert alert-danger">
+            <div *ngIf="addEmployeeForm.controls['email'].errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="addEmployeeForm.controls['email'].invalid && !addEmployeeForm.controls['email'].errors.required">
+               Email is not valid.
+            </div>
+         </div>
+          <label>*Phone</label>
+          <input type="text" class="form-control" formControlName="phone" placeholder="Phone:" >
+          <div *ngIf="addEmployeeForm.controls['phone'].invalid && (addEmployeeForm.controls['phone'].dirty || addEmployeeForm.controls['phone'].touched)" class="alert alert-danger">
+            <div *ngIf="addEmployeeForm.controls['phone'].errors.required">
+              Phone Number is required.
+            </div>
+         </div>
+          <label>*Joining Date</label>
+         <mat-form-field>
+            <input matInput [matDatepicker]="myDatepicker" class="form-control" formControlName="joining_date">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+         </mat-form-field>
+          <div *ngIf="addEmployeeForm.controls['joining_date'].invalid && (addEmployeeForm.controls['joining_date'].dirty || addEmployeeForm.controls['joining_date'].touched)" class="alert alert-danger">
+            <div *ngIf="addEmployeeForm.controls['joining_date'].errors.required">
+              Select the Joining Date
+            </div>
+         </div>
       </div>
       <div class="part2">
-          <label>Grade</label>
-          <input type="text" name="grade" placeholder="Grade:">
+          <label>*Grade</label>
+          <mat-form-field floatLabel=never>
+            <mat-select placeholder = "Garde:" 
+               class="form-control" formControlName="grade">
+               <mat-option *ngFor = "let grade of grades" [value] = "grade">
+                  {{grade}}
+               </mat-option>
+            </mat-select>
+         </mat-form-field>
+         <div *ngIf="addEmployeeForm.controls['grade'].invalid && (addEmployeeForm.controls['grade'].dirty || addEmployeeForm.controls['grade'].touched)" class="alert alert-danger">
+            <div *ngIf="addEmployeeForm.controls['grade'].errors.required">
+              Select the Grade
+            </div>
+         </div>
           <label>Role</label>
-          <input type="text" name="role" placeholder="Role:">
+          <input type="text" class="form-control" formControlName="role"  placeholder="Role:">
           <label>Reporting Manager</label>
-          <input type="text" name="reporting" placeholder="Manager:">
-          <label>Employment type</label>
-          <input type="text" name="type" placeholder="type:">
-          <label>Employment Status</label>
-          <input type="text" name="status" placeholder="Status:">
+          <input type="text" class="form-control" formControlName="reporting_manager"  placeholder="Manager:">
+          <label>*Employment type</label>
+          <mat-form-field floatLabel=never>
+            <mat-select placeholder = "Type:" 
+            class="form-control" formControlName="job_type">
+               <mat-option *ngFor = "let type of employmentTypes" [value] = "type" >
+                  {{type}}
+               </mat-option>
+            </mat-select>
+         </mat-form-field>
+         <div *ngIf="addEmployeeForm.controls['job_type'].invalid && (addEmployeeForm.controls['job_type'].dirty || addEmployeeForm.controls['job_type'].touched)" class="alert alert-danger">
+            <div *ngIf="addEmployeeForm.controls['job_type'].errors.required">
+              Select the job type
+            </div>
+         </div>
+          <label>*Employment Status</label>
+          <mat-form-field floatLabel=never>
+            <mat-select placeholder = "Status:" 
+             class="form-control" formControlName="status">
+               <mat-option *ngFor = "let status of employmentStatus" [value] = "status">
+                  {{status}}
+               </mat-option>
+            </mat-select>
+         </mat-form-field>
+         <div *ngIf="addEmployeeForm.controls['status'].invalid && (addEmployeeForm.controls['status'].dirty || addEmployeeForm.controls['status'].touched)" class="alert alert-danger">
+            <div *ngIf="addEmployeeForm.controls['status'].errors.required">
+              Job Status is required
+            </div>
+         </div>
+         <br>
+         <button type="submit"  [disabled]="addEmployeeForm.pristine || addEmployeeForm.invalid" (click)="addNewEmployee(addEmployeeForm.value)">ADD EMPLOYEE</button>
       </div>
       
     </form>

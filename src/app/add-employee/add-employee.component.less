@@ -5,6 +5,8 @@
     z-index: 9;
     margin-top: 120px;
     text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
     h2{
         text-align: center;
         font-family: robotoBlack;
@@ -16,6 +18,7 @@
     .form-container{
         width: 100%;
         text-align: center;
+        margin-top: 30px;
         form{
             text-align: left;
             display: inline-flex;
@@ -27,6 +30,19 @@
             .part2{
                 width: 400px;
                 display: inline-block;
+            }
+            .mat-form-field{
+                width: 75%;
+            }
+            .alert-danger div{
+                color: #721c24;
+                background-color: #f8d7da;
+                border-color: #f5c6cb;
+                height: 40px;
+                line-height: 40px;
+                margin-bottom: 15px;
+                padding: 0px 5px;
+                width: 75%;
             }
             input{
                 display: block;
@@ -40,6 +56,7 @@
                 font-family: robotoRegular;
                 color: #5e7c85;
                 font-size: 17px;
+                text-transform: uppercase;
             }
             label{
                 display: block;
@@ -47,6 +64,28 @@
                 color: #5e7c85;
                 padding-left: 5px;
                 line-height: 30px;
+            }
+            button{
+                padding: 15px 15px 11px !important;
+                font-size: 18px !important;
+                background-color: #3ad9ae;
+                font-weight: bold;
+                text-shadow: 1px 1px #3ad9ae;
+                color: #ffffff;
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                border: 1px solid #3ad9ae;
+                cursor: pointer;
+                box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+                -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+                -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+
+                &:disabled{
+                    background-color: #cccccc;
+                    text-shadow: 1px 1px #cccccc;
+                    border: 1px solid #cccccc;
+                }
             }
         }
     }
