@@ -1,0 +1,15 @@
+<div class="model-container">
+    <h2 mat-dialog-title>Employee Registration Successful!!!</h2>
+    <ul mat-dialog-content>
+        <li><span>Name:</span>{{data.employee.first_name}} {{data.employee.last_name}}</li>
+        <li><span>Employee Id:</span>{{data.employee.emp_id}}</li>
+        <li><span>Email Id:</span>{{data.employee.email}}</li>
+        <li><span>Grade:</span>{{data.employee.grade}}</li>
+        <li><span>Joining Date:</span>{{data.employee.joining_date}}</li>
+        <li><span>Status:</span>{{data.employee.status}}</li>
+    </ul>
+    <div class="actions">
+        <button type="submit" class="green"  (click)="addNewEmployee()">ADD EMPLOYEE</button>
+        <button type="submit" class="red" (click)="addNewEmployee()" [routerLink]="['/']">HOME</button>
+    </div>
+</div>

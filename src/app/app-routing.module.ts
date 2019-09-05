@@ -5,7 +5,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'add-employee', component: AddEmployeeComponent }
 ];
 

@@ -6,8 +6,8 @@
     </div>
     <nav>
       <ul>
-        <li class="active">Home</li>
-        <li>Self Service</li>
+        <li [routerLink]="['home']" [routerLinkActive]="['active']">Home</li>
+        <li [routerLink]="['add-employee']" [routerLinkActive]="['active']">ADD Employee</li>
         <li>Manage</li>
         <li>User Guides</li>
       </ul>

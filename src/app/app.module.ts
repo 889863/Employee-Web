@@ -12,6 +12,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
+import { EmployeeModelComponent } from './employee-model/employee-model.component';
 
 
 
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    EmployeeModelComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MaterialModule,
     FormsModule
-  ],  
+  ],
+  entryComponents: [EmployeeModelComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
