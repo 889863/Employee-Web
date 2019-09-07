@@ -8,10 +8,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class HeaderComponent implements OnInit {
-
+  menuVisible: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleNavigation(){
+    this.menuVisible = !this.menuVisible;       
+  }
 }

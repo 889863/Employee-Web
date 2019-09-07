@@ -76,6 +76,7 @@
             position: relative;
             cursor: pointer;
             border: 3px solid #fff;
+            margin-bottom: 15px;
             //transition: border-radius 1s;
             //transition: transform 1s;
             h3{
@@ -182,5 +183,53 @@
     }
     to {
         transform:rotateY(360deg);
+    }
+}
+
+@media (max-width: 550px) {
+    .home-container{
+        background: none;
+        padding-top: 20px;
+        text-align: center;
+        .search-component{
+            width: 90%;
+            width: 90%;
+            margin: 0 auto;
+            h1{
+                font-size: 40px;
+                line-height: 50px;
+                margin-bottom: 20px;
+            }
+            .search{
+                position: relative;
+                input{
+                    width: 60%;
+                    height: 55px;
+                    line-height: 55px;
+                    font-size: 25px;
+                }
+                .search-button{
+                    width: 55px;
+                    height: 55px;
+                    margin-left: -55px;
+                    background-position: 12px 12px;
+                    background-size: 35px 35px;
+                    &:hover{
+                        background-position: 12px 12px;
+                        background-size: 35px 35px;
+                    }
+                }
+            }
+        }
+        .home-sections{
+            width: 90%;
+            margin: 0 auto;
+            .section{
+                height: 74px;
+                .icon{
+                    display: none;
+                }
+            }
+        }
     }
 }

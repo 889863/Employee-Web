@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule} from '@angular/router';
 import { NgModule } from '@angular/core';
-
+import { FormGroup , FormControl , ReactiveFormsModule , FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,8 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MaterialModule } from './material/material.module';
-import { FormsModule } from '@angular/forms';
 import { EmployeeModelComponent } from './employee-model/employee-model.component';
+import { ErrorModelComponent } from './error-model/error-model.component';
 
 
 
@@ -23,17 +23,31 @@ import { EmployeeModelComponent } from './employee-model/employee-model.componen
     FooterComponent,
     HomeComponent,
     AddEmployeeComponent,
-    EmployeeModelComponent
+    EmployeeModelComponent,
+    ErrorModelComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    FormControl,
+    FormGroup
   ],
-  entryComponents: [EmployeeModelComponent],
+  exports: [
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    MaterialModule,
+    FormsModule,
+    FormControl,
+    FormGroup
+  ],
+  entryComponents: [EmployeeModelComponent, ErrorModelComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

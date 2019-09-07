@@ -72,3 +72,85 @@ header{
     }
 }
 
+@media (max-width: 720px) {
+    header{
+        div.top{
+            width: 100%;
+        }
+        div.nav-container{
+            width: 100%;
+            div.logo{
+                position: absolute;
+            }
+            nav {
+                .menu-icon{
+                    display: inline-block;
+                    cursor: pointer;
+                    position: absolute;
+                    right: 17px;
+                    top: 10px;
+                    .bar1, .bar2, .bar3 {
+                        width: 35px;
+                        height: 5px;
+                        background-color: #5e7c85;
+                        margin: 6px 0;
+                        transition: 0.4s;
+                    }
+                    &.change{
+                        .bar1{
+                            -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+                            transform: rotate(-45deg) translate(-9px, 6px);
+                        }
+                        .bar2{
+                            opacity: 0;
+                        }
+                        .bar3{
+                            -webkit-transform: rotate(45deg) translate(-8px, -8px);
+                            transform: rotate(45deg) translate(-8px, -8px);
+                        }
+                    }
+                }
+                ul{
+                    background: #3ad9ae;
+                    height: auto;
+                    margin-right: 0px;
+                    padding-bottom: 0px;
+                    margin-top: 60px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height .6s;
+                    li{
+                        display:block;
+                        text-align: left;
+                        &::after{
+                            content: '';
+                            display: block;
+                            width: 0;
+                            height: 5px;
+                            background: #ffffff;
+                            transition: width .3s;
+                        }                   
+                        &:hover{
+                            &::after{
+                                width: 100%;
+                            }
+                        }
+                        &.active{
+                            &::after{
+                                width: 100%;
+                                background: #eeeeee;
+                            }
+                        }
+                    }
+                    &.change{
+                        max-height: 300px;
+                        padding-bottom: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

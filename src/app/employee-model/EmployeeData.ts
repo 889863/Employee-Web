@@ -1,4 +1,5 @@
 export interface EmployeeData {
+  employee: {
     emp_id: string;
     first_name: string;
     last_name: string;
@@ -11,3 +12,5 @@ export interface EmployeeData {
     job_type: string;
     status: string;
   }
+
+}

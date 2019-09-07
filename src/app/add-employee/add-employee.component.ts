@@ -3,6 +3,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { EmployeeService } from '../employee.service';
 import { EmployeeModelComponent } from '../employee-model/employee-model.component';
+import { ErrorModelComponent } from '../error-model/error-model.component';
 
 @Component({
   selector: 'app-add-employee',
@@ -63,7 +64,19 @@ export class AddEmployeeComponent implements OnInit {
       this.addEmployeeForm.controls['status'].setErrors(null);
     }).catch(error=>{
       console.log("********************", error);
+      const dialogRef = this.dialog.open(ErrorModelComponent, {
+        width: '60%',
+        disableClose: true,
+        backdropClass:'error-model',
+        panelClass: 'error-model',
+        data: error
+      });
     })
+  }
+
+  updateEmail(){
+    let emailAddress: string = this.addEmployeeForm.value.first_name +'.'+this.addEmployeeForm.value.last_name+'@mycompany.com';
+    this.addEmployeeForm.controls['email'].patchValue(emailAddress);
   }
 
 }
