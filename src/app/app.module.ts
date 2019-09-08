@@ -30,12 +30,10 @@ import { ErrorModelComponent } from './error-model/error-model.component';
     RouterModule,
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    FormControl,
-    FormGroup
+    ReactiveFormsModule
   ],
   exports: [
     BrowserModule,
@@ -44,8 +42,7 @@ import { ErrorModelComponent } from './error-model/error-model.component';
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    FormControl,
-    FormGroup
+    ReactiveFormsModule
   ],
   entryComponents: [EmployeeModelComponent, ErrorModelComponent],
   providers: [],

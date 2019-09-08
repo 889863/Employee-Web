@@ -18,8 +18,6 @@ export class AddEmployeeComponent implements OnInit {
   employmentStatus:string[]  = ['ACTIVE', 'DISABLED', 'HOLD'];
   newEmployee = {};
 
-  myNumber : number = 12;
-
   constructor(private fb: FormBuilder, public dialog: MatDialog, private employeeService: EmployeeService) {
     this.createEmployeeForm();
    }
@@ -27,6 +25,7 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit() {
   }
 
+  /* This Method is to create and validate the Employee Form */
   createEmployeeForm() {
     this.addEmployeeForm = this.fb.group({
       first_name: ['', Validators.required ],
@@ -45,12 +44,12 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
 
+    /* This Method is to call the Employee service to add new employee */
   addNewEmployee(requestData) {
-    console.log("this is here", requestData);
-    console.log(this.newEmployee);
     this.newEmployee = {};
     this.employeeService.addEmployee(requestData)
     .then(data =>{
+      console.log("Add new Employee : - Success", data);
       const dialogRef = this.dialog.open(EmployeeModelComponent, {
         width: '80%',
         disableClose: true,
@@ -63,7 +62,7 @@ export class AddEmployeeComponent implements OnInit {
       this.addEmployeeForm.controls['job_type'].setErrors(null);
       this.addEmployeeForm.controls['status'].setErrors(null);
     }).catch(error=>{
-      console.log("********************", error);
+      console.log("Add new Employee : - Error", error)
       const dialogRef = this.dialog.open(ErrorModelComponent, {
         width: '60%',
         disableClose: true,
@@ -73,7 +72,8 @@ export class AddEmployeeComponent implements OnInit {
       });
     })
   }
-
+  
+  /*This method is to update the email field when user typing the first name and last name*/
   updateEmail(){
     let emailAddress: string = this.addEmployeeForm.value.first_name +'.'+this.addEmployeeForm.value.last_name+'@mycompany.com';
     this.addEmployeeForm.controls['email'].patchValue(emailAddress);

@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  /* This method is to toggle the Navigation Menu based on user actions */
   toggleNavigation(){
     this.menuVisible = !this.menuVisible;       
   }

@@ -10,12 +10,17 @@ describe('EmployeeModelComponent', () => {
   const mockMatDialog = {
     closeAll: (): void => undefined
   };
+  const dialogMock = {
+    close: () => { }
+   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule],
-      providers: [EmployeeModelComponent,  { provide: MatDialog, useValue: mockMatDialog },  { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} }
+      providers: [EmployeeModelComponent,  
+        { provide: MatDialog, useValue: mockMatDialog },  
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: dialogMock }
     ],
       declarations: [ EmployeeModelComponent ]
     })
@@ -28,7 +33,12 @@ describe('EmployeeModelComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create Employee Model Component', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should Test the addNewEmployee method', () => {
+    component.addNewEmployee();
+    expect(component).toBeTruthy();
+  });
 });

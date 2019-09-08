@@ -13,7 +13,8 @@ export class EmployeeModelComponent implements OnInit {
     public dialogRef: MatDialogRef<EmployeeModelComponent>,
     @Inject(MAT_DIALOG_DATA) public data: EmployeeData
   ) { }
-
+  
+  /* This Method is to close the Model window based on the user action */
   addNewEmployee(): void {
     this.dialogRef.close();
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { environment } from '../environments/environment'
 
+/*Data Modeling for the Add Employee Response Data*/
 interface employeeDTO {
   first_name: string;
   last_name: string;
@@ -23,20 +24,21 @@ export class EmployeeService {
   serviceEndPoint: string = environment.serviceUrl;
   constructor(private http: HttpClient) { }
 
+  /*This method is used to call the REST end point to add new Employee */
   addEmployee(request:employeeDTO) {
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.serviceEndPoint, request)
         .toPromise()
         .then(
-          res => { // Success
-         console.log("addEmployee Response", res);
+          res => {
+            /* Resolving the Success Response */
           resolve(res);
-          },
-          msg => { // Error
-            console.log("addEmployee Reject Response", msg);
-          reject(msg);
           }
-        );
+        )
+        .catch(err => {
+          /* Rejecting the Error Response */
+          reject(err);
+      });
     });
     return promise;
   }

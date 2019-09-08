@@ -5,7 +5,7 @@ import { HeaderComponent } from './header.component';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-
+  let menuVisible: boolean = false;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule],
@@ -20,7 +20,12 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Header Component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call toggleNavigation method', () => {
+    component.toggleNavigation();
+    expect(component.menuVisible).toBe(true);
   });
 });

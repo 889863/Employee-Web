@@ -16,6 +16,7 @@ export class ErrorModelComponent implements OnInit {
   ngOnInit() {
   }
 
+  /* This Method is to close the Model window based on the user action */
   closeModelWindow(){
     this.dialogRef.close();
   }
