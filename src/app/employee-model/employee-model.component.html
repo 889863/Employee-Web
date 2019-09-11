@@ -1,15 +1,78 @@
-<div class="model-container">
+<div class="model-container" *ngIf="data.form_type == 'add'">
     <h2 mat-dialog-title>Employee Registration Successful!!!</h2>
     <ul mat-dialog-content>
-        <li><span>Name:</span>{{data.employee.first_name}} {{data.employee.last_name}}</li>
-        <li><span>Employee Id:</span>{{data.employee.emp_id}}</li>
-        <li><span>Email Id:</span>{{data.employee.email}}</li>
-        <li><span>Grade:</span>{{data.employee.grade}}</li>
-        <li><span>Joining Date:</span>{{data.employee.joining_date}}</li>
-        <li><span>Status:</span>{{data.employee.status}}</li>
+        <li><span>Name:</span>{{data.first_name}} {{data.last_name}}</li>
+        <li><span>Employee Id:</span>{{data.emp_id}}</li>
+        <li><span>Email Id:</span>{{data.email}}</li>
+        <li><span>Grade:</span>{{data.grade}}</li>
+        <li><span>Joining Date:</span>{{data.joining_date}}</li>
+        <li><span>Status:</span>{{data.status}}</li>
     </ul>
     <div class="actions">
-        <button type="submit" class="green"  (click)="addNewEmployee()">ADD EMPLOYEE</button>
-        <button type="submit" class="red" (click)="addNewEmployee()" [routerLink]="['/']">HOME</button>
+        <button type="submit" class="green" (click)="cancelModelWindow()">ADD EMPLOYEE</button>
+        <button type="submit" class="red" (click)="cancelModelWindow()" [routerLink]="['/']">HOME</button>
+    </div>
+</div>
+
+<div class="model-container" *ngIf="data.form_type == 'edit'">
+    <form mat-dialog-content autocomplete="off" [formGroup]="editEmployeeForm" novalidate *ngIf="!employeeEdited">
+        <label>Name: <span>{{data.first_name}} {{data.last_name}}</span></label>
+        <label>Employee Id: <span>{{data.emp_id}}</span></label>
+        <label>Email Id: <span>{{data.email}}</span></label>
+        <label>Phone *</label>
+        <input type="text" class="form-control" formControlName="phone" placeholder="Phone:" maxlength="10">
+        <div *ngIf="editEmployeeForm.controls['phone'].invalid && (editEmployeeForm.controls['phone'].dirty || editEmployeeForm.controls['phone'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="editEmployeeForm.controls['phone'].errors.required">
+                Phone Number is required.
+            </div>
+            <div
+                *ngIf="editEmployeeForm.controls['phone'].invalid && !editEmployeeForm.controls['phone'].errors.required">
+                Must be 10 digits.
+            </div>
+        </div>
+        <label>Grade *</label>
+        <mat-form-field floatLabel=never>
+            <mat-select placeholder="Garde:" class="form-control" formControlName="grade">
+                <mat-option *ngFor="let grade of grades" [value]="grade">
+                    {{grade}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="editEmployeeForm.controls['grade'].invalid && (editEmployeeForm.controls['grade'].dirty || editEmployeeForm.controls['grade'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="editEmployeeForm.controls['grade'].errors.required">
+                Select the Grade
+            </div>
+        </div>
+        <label>Employment Status *</label>
+        <mat-form-field floatLabel=never>
+            <mat-select placeholder="Status:" class="form-control" formControlName="status">
+                <mat-option *ngFor="let status of employmentStatus" [value]="status">
+                    {{status}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="editEmployeeForm.controls['status'].invalid && (editEmployeeForm.controls['status'].dirty || editEmployeeForm.controls['status'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="editEmployeeForm.controls['status'].errors.required">
+                Job Status is required
+            </div>
+        </div>
+    </form>
+    <div class="actions" *ngIf="employeeEditedFailure">
+        <div class="alert alert-danger">
+            <div>
+                Employee Update Failed . Please try again.
+            </div>
+        </div>
+    </div>
+    <div class="actions" *ngIf="!employeeEdited">
+        <button type="submit" class="green" (click)="updateEmployeeData(editEmployeeForm.value)">UPDATE</button>
+        <button type="submit" class="red" (click)="cancelModelWindow()">CANCEL</button>
+    </div>
+    <div class="actions" *ngIf="employeeEdited">
+        <p>Employee Updated Successfully</p>
+        <button type="submit" class="red" (click)="cancelModelWindow()">CLOSE</button>
     </div>
 </div>

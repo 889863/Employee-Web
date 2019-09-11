@@ -1,0 +1,153 @@
+.manage-employee-container{
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 9;
+    margin-top: 120px;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    min-height: 471px;
+    h2{
+        text-align: center;
+        font-family: robotoBlack;
+        font-size: 35px;
+        text-transform: uppercase;
+        color: #5e7c85;
+        line-height: 35px;
+    }
+    form{
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+        input{
+            display: inline-block;
+            width: 220px;
+            height: 40px;
+            line-height: 40px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            padding: 0px 5px;
+            font-family: robotoRegular;
+            color: #5e7c85;
+            font-size: 16px;
+            text-transform: uppercase;
+            vertical-align: top;
+        }
+        button{
+            width: 40px;
+            height: 40px;
+            border: 1px solid #5e7c85;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+            background: url(../../assets/images/search.png) #5e7c85 no-repeat;
+            background-position: 10px 10px;
+            background-size: 20px 20px;
+            margin-left: 0px;
+            vertical-align: top;
+            &:hover{
+                background: url(../../assets/images/search.png) #3ad9ae no-repeat;
+                background-position: 10px 10px;
+                background-size: 20px 20px;
+                border: 1px solid #3ad9ae;
+            }
+        }
+       .search-option{
+            margin-right: 10px;
+        }
+    }
+    .employee-list{
+        padding-top: 20px;
+        width: 100%;
+        text-align: center;
+        ul{
+            width: 100%;
+            text-align: left;
+            text-align: center;
+            li{
+                text-decoration: none;
+                display: inline-block;
+                padding: 10px;
+                min-width: 60px;
+                border: 1px solid #5e7c85;
+                line-height: 28px;
+                &.name{
+                    min-width: 170px;
+                }
+                &.email{
+                    min-width: 250px;
+                }
+            }
+        }
+    }
+    
+}
+
+@media (max-width: 750px) {
+    .manage-employee-container{
+        .employee-list{
+            padding-top: 20px;
+            width: 100%;
+            text-align: center;
+            ul{
+                width: 100%;
+                text-align: left;
+                text-align: center;
+                li{
+                    text-decoration: none;
+                    display: inline-block;
+                    padding: 10px;
+                    min-width: 60px;
+                    border:0px;
+                    border-bottom: 1px solid #5e7c85;
+                    line-height: 28px;
+                    &.name{
+                        min-width: 170px;
+                    }
+                    &.email{
+                        min-width: 250px;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width: 500px) {
+    .manage-employee-container{
+        .employee-list{
+            padding-top: 20px;
+            width: 100%;
+            text-align: center;
+            ul{
+                width: 100%;
+                text-align: left;
+                text-align: center;
+                border-bottom: 1px solid #5e7c85;
+                margin-bottom: 20px;
+                li{
+                    text-decoration: none;
+                    display: block;
+                    padding: 5px 10px;
+                    min-width: 60px;
+                    border: 0px solid #5e7c85;
+                    line-height: 28px;
+                    text-align: left;
+                    &.name{
+                        min-width: 170px;
+                    }
+                    &.email{
+                        min-width: 250px;
+                    }
+                }
+            }
+        }
+
+    }
+}

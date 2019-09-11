@@ -112,7 +112,52 @@
               }
           }
       }
-      
+      p{
+        font-family: robotoBlack;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: #5e7c85;
+      }
+      input{
+        display: block;
+        width: 75%;
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        padding: 0px 5px;
+        font-family: robotoRegular;
+        color: #5e7c85;
+        font-size: 17px;
+        text-transform: uppercase;
+        border-bottom: 1px solid gray;
+    }
+    label{
+        display: block;
+        font-family: robotoMedium;
+        color: #5e7c85;
+        padding-left: 5px;
+        line-height: 30px;
+        text-transform: uppercase;
+        font-size: 15px;
+        span{
+           color:  rgba(0,0,0,.70);
+        }
+    }
+    .alert-danger div{
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 15px;
+        padding: 0px 5px;
+        width: 75%;
+    }
+    .mat-form-field{
+        width: 75%;
+    }
 }
 .cdk-overlay-pane{
 	width: 80% !important ;
@@ -121,4 +166,24 @@
 }
 .mat-dialog-container{
 	overflow: hidden;
+}
+
+@media (max-width: 500px) {
+    .model-container{
+        input{
+            width: 100%;
+            font-size: 16px;
+        }
+        .alert-danger div{
+            width: 100%;
+        }
+        .mat-form-field{
+            width: 100%;
+        }
+        .model-container{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
 }

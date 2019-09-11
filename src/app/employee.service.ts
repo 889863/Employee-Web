@@ -14,7 +14,6 @@ interface employeeDTO {
   joining_date: string;
   job_type: string;
   status: string;
-
 }
 
 @Injectable({
@@ -28,6 +27,45 @@ export class EmployeeService {
   addEmployee(request:employeeDTO) {
     let promise = new Promise((resolve, reject) => {
       this.http.post(this.serviceEndPoint, request)
+        .toPromise()
+        .then(
+          res => {
+            /* Resolving the Success Response */
+          resolve(res);
+          }
+        )
+        .catch(err => {
+          /* Rejecting the Error Response */
+          reject(err);
+      });
+    });
+    return promise;
+  }
+
+  /*This method is used to call the REST end point to Edit Employee */
+  editEmployee(employeeId, request) {
+    let promise = new Promise((resolve, reject) => {
+      this.http.patch(this.serviceEndPoint+employeeId, request)
+        .toPromise()
+        .then(
+          res => {
+            /* Resolving the Success Response */
+          resolve(res);
+          }
+        )
+        .catch(err => {
+          /* Rejecting the Error Response */
+          reject(err);
+      });
+    });
+    return promise;
+  }
+
+
+  /*This method is used to call the REST end point to find Employee */
+  searchEmployee(param) {
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.serviceEndPoint+'search', {params: param})
         .toPromise()
         .then(
           res => {

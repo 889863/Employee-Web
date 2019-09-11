@@ -50,6 +50,7 @@ export class AddEmployeeComponent implements OnInit {
     this.employeeService.addEmployee(requestData)
     .then(data =>{
       console.log("Add new Employee : - Success", data);
+      data['form_type'] = 'add';
       const dialogRef = this.dialog.open(EmployeeModelComponent, {
         width: '80%',
         disableClose: true,
@@ -63,6 +64,9 @@ export class AddEmployeeComponent implements OnInit {
       this.addEmployeeForm.controls['status'].setErrors(null);
     }).catch(error=>{
       console.log("Add new Employee : - Error", error)
+      if(error.status == 404){
+        error.message = 'Email Address :'+this.addEmployeeForm.value.email+' already exists. Please choose different email address';
+      }
       const dialogRef = this.dialog.open(ErrorModelComponent, {
         width: '60%',
         disableClose: true,

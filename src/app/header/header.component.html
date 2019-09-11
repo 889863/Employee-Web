@@ -12,7 +12,7 @@
       <ul [ngClass]="menuVisible ? 'change' : ''">
         <li [routerLink]="['home']" [routerLinkActive]="['active']">Home</li>
         <li [routerLink]="['add-employee']" [routerLinkActive]="['active']">ADD Employee</li>
-        <li>Manage</li>
+        <li [routerLink]="['manage-employee']"  [routerLinkActive]="['active']">Manage</li>
         <li>User Guides</li>
       </ul>
     </nav>

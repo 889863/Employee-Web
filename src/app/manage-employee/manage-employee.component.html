@@ -1,0 +1,23 @@
+<div class="manage-employee-container">
+    <h2>Manage Employee</h2>
+    <form autocomplete="off" [formGroup]="searchEmployeeForm" novalidate>
+        <mat-form-field floatLabel=never class="search-option">
+            <mat-select placeholder="Search Option:" class="form-control" formControlName="search_option">
+                <mat-option *ngFor="let option of searchOptions" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <input type="text" class="form-control" formControlName="search_value" placeholder="Search:">
+        <button class="search-button" type="submit"  (click)="searchEmployee(searchEmployeeForm.value.search_option, searchEmployeeForm.value.search_value)"></button>
+    </form>
+    <div class="employee-list">
+        <ul *ngFor="let employee of employeeList; let i = index">
+            <li>{{employee.emp_id}}</li>
+            <li class="name">{{employee.first_name}} {{employee.last_name}}</li>
+            <li  class="email">{{ (employee.email.length>25)? (employee.email | slice:0:25)+'..':(employee.email) }}</li>
+            <li><button type="submit"  (click)="editEmployee(employee)">EDIT</button></li>
+            <li><button type="submit" (click)="deleteEmployee(employee)">DELETE</button></li>
+        </ul>
+    </div>
+</div>

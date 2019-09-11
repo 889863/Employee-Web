@@ -13,6 +13,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { MaterialModule } from './material/material.module';
 import { EmployeeModelComponent } from './employee-model/employee-model.component';
 import { ErrorModelComponent } from './error-model/error-model.component';
+import { ManageEmployeeComponent } from './manage-employee/manage-employee.component';
 
 
 
@@ -24,7 +25,8 @@ import { ErrorModelComponent } from './error-model/error-model.component';
     HomeComponent,
     AddEmployeeComponent,
     EmployeeModelComponent,
-    ErrorModelComponent
+    ErrorModelComponent,
+    ManageEmployeeComponent
   ],
   imports: [
     RouterModule,
