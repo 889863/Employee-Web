@@ -14,6 +14,9 @@ import { MaterialModule } from './material/material.module';
 import { EmployeeModelComponent } from './employee-model/employee-model.component';
 import { ErrorModelComponent } from './error-model/error-model.component';
 import { ManageEmployeeComponent } from './manage-employee/manage-employee.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoaderComponent } from './loader/loader.component';
+import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 
 
 
@@ -26,7 +29,9 @@ import { ManageEmployeeComponent } from './manage-employee/manage-employee.compo
     AddEmployeeComponent,
     EmployeeModelComponent,
     ErrorModelComponent,
-    ManageEmployeeComponent
+    ManageEmployeeComponent,
+    LoaderComponent,
+    DeleteEmployeeComponent
   ],
   imports: [
     RouterModule,
@@ -35,7 +40,8 @@ import { ManageEmployeeComponent } from './manage-employee/manage-employee.compo
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     BrowserModule,
@@ -44,9 +50,10 @@ import { ManageEmployeeComponent } from './manage-employee/manage-employee.compo
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
-  entryComponents: [EmployeeModelComponent, ErrorModelComponent],
+  entryComponents: [EmployeeModelComponent, ErrorModelComponent, LoaderComponent, DeleteEmployeeComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

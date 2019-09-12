@@ -6,4 +6,5 @@
 export const environment = {
   production: false,
   serviceUrl:'http://localhost:3000/employee/'
+ //serviceUrl:'http://ec2-52-15-122-154.us-east-2.compute.amazonaws.com:3000/employee/'
 };

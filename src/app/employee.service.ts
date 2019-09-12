@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from '../environments/environment'
 
 /*Data Modeling for the Add Employee Response Data*/
@@ -80,7 +80,31 @@ export class EmployeeService {
     });
     return promise;
   }
-  
+
+  /*This method is used to call the REST end point to Delete Employee */
+  deleteSelectedUser(empId) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: { },
+    };
+    let promise = new Promise((resolve, reject) => {
+      this.http.delete(this.serviceEndPoint+empId, options)
+        .toPromise()
+        .then(
+          res => {
+            /* Resolving the Success Response */
+          resolve(res);
+          }
+        )
+        .catch(err => {
+          /* Rejecting the Error Response */
+          reject(err);
+      });
+    });
+    return promise;
+  }  
 }
 
 

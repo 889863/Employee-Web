@@ -75,5 +75,20 @@ it('should test addNewEmployee method- FAILURE', fakeAsync(() => {
   expect(component.addEmployeeForm.value['phone']).toBe('');
   expect(component.addEmployeeForm.value['joining_date']).toBe('');
 }));
+
+it('should test addNewEmployee method- FAILURE - 404', fakeAsync(() => {
+  let employeeService = TestBed.get(EmployeeService);
+  let request = {"first_name":"lycus","last_name":"amanda","gender":"FEMALE","email":"lycus.amanda@mycompany.com","phone":"5757557757","joining_date":"2019-09-08T05:00:00.000Z","grade":"C2","role":"senior analyst","reporting_manager":"subin john","job_type":"FULL TIME","status":"ACTIVE"};
+  errorData.status = 404;
+  spyOn(employeeService, 'addEmployee').and.returnValue(Promise.reject(errorData));
+
+  component.addNewEmployee(request);
+  expect(component.addEmployeeForm.value['email']).toBe('');
+  expect(component.addEmployeeForm.value['first_name']).toBe('');
+  expect(component.addEmployeeForm.value['last_name']).toBe('');
+  expect(component.addEmployeeForm.value['gender']).toBe('');
+  expect(component.addEmployeeForm.value['phone']).toBe('');
+  expect(component.addEmployeeForm.value['joining_date']).toBe('');
+}));
   
 });

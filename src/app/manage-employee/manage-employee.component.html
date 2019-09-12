@@ -12,6 +12,7 @@
         <button class="search-button" type="submit"  (click)="searchEmployee(searchEmployeeForm.value.search_option, searchEmployeeForm.value.search_value)"></button>
     </form>
     <div class="employee-list">
+        <p *ngIf='noresult'>No Employee Found!!</p>
         <ul *ngFor="let employee of employeeList; let i = index">
             <li>{{employee.emp_id}}</li>
             <li class="name">{{employee.first_name}} {{employee.last_name}}</li>

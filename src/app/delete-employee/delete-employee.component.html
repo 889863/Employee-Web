@@ -1,0 +1,7 @@
+<div class="delete-wrapper" mat-dialog-content>
+    <h2 mat-dialog-title *ngIf="!deleteSuccess && !deleteError">Are you sure to delete <span>{{data.first_name}} {{data.last_name}}</span> ??</h2>
+    <h2 mat-dialog-title *ngIf='deleteSuccess'>Successfully Deleted!! <span>{{data.first_name}} {{data.last_name}}</span></h2>
+    <h2 mat-dialog-title *ngIf='deleteError'>Error Deleting <span>{{data.first_name}} {{data.last_name}}</span></h2>
+    <button class="cancel" type="submit" (click)="closeModelWindow()">CANCEL</button>
+    <button type="submit" *ngIf="!deleteSuccess && !deleteError" (click)="deleteSelectedUser(data)">CONFIRM</button>
+</div>

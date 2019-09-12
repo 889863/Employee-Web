@@ -31,6 +31,7 @@ export class EmployeeModelComponent implements OnInit {
   }
 
   ngOnInit() {
+    /*This is to populate the selected user details*/
     this.editEmployeeForm.controls['phone'].patchValue(this.data.phone);
     this.editEmployeeForm.controls['grade'].patchValue(this.data.grade);
     this.editEmployeeForm.controls['status'].patchValue(this.data.status);
