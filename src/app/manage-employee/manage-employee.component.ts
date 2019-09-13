@@ -38,8 +38,8 @@ export class ManageEmployeeComponent implements OnInit {
   searchEmployee(option, value) {
     this.employeeList = [];
     this.noresult = false;
-    this.enableLoading();
     if (option && value) {
+      this.enableLoading();
       let request = { 'option': option, 'value': value.toUpperCase() };
       this.employeeService.searchEmployee(request)
         .then(data => {
